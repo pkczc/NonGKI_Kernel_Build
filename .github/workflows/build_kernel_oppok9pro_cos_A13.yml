@@ -1,4 +1,4 @@
-name: Build Kernel OPPO K9 PRO (COLOROS 13) with KSU
+name: Build Kernel OPPO K9 PRO (COLOROS 13) with KSU SUSFS
 on:
   workflow_call:
   workflow_dispatch:
