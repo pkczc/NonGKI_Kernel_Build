@@ -538,7 +538,7 @@ jobs:
         if: env.SUSFS_ENABLE == 'true' && env.SUSFS_FIXED == 'true'
         run: |
           cd $GITHUB_WORKSPACE/device_kernel/
-          cp NonGKI_Kernel_Patches/NonGKI_Patcher/PEYM00.patch ./
+          cp NonGKI_Kernel_Patches/PEYM00.patch ./
 
           patch -p1 < PEYM00.patch || true
 
