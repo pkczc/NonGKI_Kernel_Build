@@ -2,7 +2,10 @@
 ![GitHub branch check runs](https://img.shields.io/github/check-runs/JackA1ltman/NonGKI_Kernel_Build/main)![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/JackA1ltman/NonGKI_Kernel_Build/latest/total)  
 [Supported Devices](Supported_Devices.md) | [中文文档](README.md) | English | [Updated Logs](Updated.md)  
 
-**Ver**.1.6
+**Ver**.1.6 Final LTS  
+> [!IMPORTANT]
+> v1 project will enter long-term maintenance mode, which means there will be no future feature enhancements. We will only maintain the current compilation results.  
+> v2 version will be officially put into use: [NonGKI_Kernel_Build_2nd](https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd)
 
 **Non-GKI**: What we commonly refer to as Non-GKI includes both GKI1.0 (kernel versions 4.19-5.4) (5.4 is QGKI) and true Non-GKI (kernel versions ≤ 4.14).  
 
@@ -76,6 +79,7 @@ GitHub has dropped support for Ubuntu 20.04. If you still need it or are using C
     - **HOOK_METHOD** - Two KernelSU patching methods are available:
         - **normal**: Standard patching, works in most cases. This is only suitable for ARM64 devices with kernel version 3.18 or higher.
         - [syscall](https://github.com/backslashxx/KernelSU/issues/5): Minimal patching method, which may improve hiding KernelSU but might cause ISO compliance issues with older Clang versions，And there are issues with support for kernels ≤4.9. It is recommended to enable this only for higher kernel versions. We now support all kernel versions, with 3.4 being the minimum supported version. For kernels with versions **4.9 or older**, it will automatically apply patches for kernel_write and kernel_read. However, it's possible that a second round of patching might be needed. For newer kernel versions, this isn't a concern.
+        - **tracepoint**: Created by SukiSU-Ultra author ShirkNeko, this is based on Syscall Hook 1.4, which further minimizes the patching. It has been confirmed to support kernel versions between 5.4 and 3.18. (**SukiSU-Ultra Only**)
     - **HOOK_OLDER** - If you need the syscall patch, but your device or KernelSU doesn't support the latest version of syscall, you can enable this.
     - **PROFILE_NAME** - Enter the name of your modified ENV environment variable file, such as codename_rom_template.env.
     - **KERNELSU_SUS_PATCH** - If your KernelSU is not part of KernelSU-Next and does not have a patch branch for SuSFS, you can enable this option (true). However, we do not recommend doing so, as the KernelSU branches have been heavily modified, and manual patching is no longer suitable for the current era.
@@ -165,7 +169,7 @@ Below is an introduction to the patches included in the Patches directory:
     
 - **syscall_hook_patches_early.sh**
     - Variable: None
-    - This is the original version of the syscall patch, intended for situations where you need syscall functionality but the latest version fails to execute.
+    - This is the original version of the syscall patch, intended for situations where you need syscall functionality but the latest version fails to execute. Given that most KernelSU forks have been updated to at least Syscall 1.4, I will no longer maintain this patch in the future. However, I will keep the patch available for manual execution.
     - Reference: https://github.com/backslashxx/KernelSU/issues/5
 
 - **syscall_hook_patches_older.sh**
