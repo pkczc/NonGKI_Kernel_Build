@@ -175,6 +175,7 @@ jobs:
             # echo "CONFIG_KSU_MANUAL_HOOK=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
             echo "CONFIG_KSU_TRACEPOINT_HOOK=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
+          echo "CONFIG_KSU_MANUAL_SU=n" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           if [[ ${{ env.SUSFS_ENABLE }} == "true" ]]; then
             echo "CONFIG_KSU_SUSFS=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
             echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
